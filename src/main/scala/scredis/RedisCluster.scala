@@ -17,7 +17,7 @@ import scala.concurrent.duration.FiniteDuration
   */
 class RedisCluster private[scredis](
     nodes: Seq[Server] = RedisConfigDefaults.Redis.ClusterNodes,
-    maxRetries: Int = 4,
+    maxRetries: Int = RedisConfigDefaults.IO.MaxRetries,
     receiveTimeoutOpt: Option[FiniteDuration] = RedisConfigDefaults.IO.ReceiveTimeoutOpt,
     connectTimeout: FiniteDuration = RedisConfigDefaults.IO.ConnectTimeout,
     maxWriteBatchSize: Int = RedisConfigDefaults.IO.MaxWriteBatchSize,
@@ -63,7 +63,7 @@ class RedisCluster private[scredis](
     */
   def this(config: RedisConfig) = this(
     nodes = config.Redis.ClusterNodes,
-    maxRetries = 4,
+    maxRetries = config.IO.MaxRetries,
     receiveTimeoutOpt = config.IO.ReceiveTimeoutOpt,
     connectTimeout = config.IO.ConnectTimeout,
     maxWriteBatchSize = config.IO.MaxWriteBatchSize,
@@ -107,7 +107,7 @@ object RedisCluster {
     */
   def apply(
     nodes: Seq[Server] = RedisConfigDefaults.Redis.ClusterNodes,
-    maxRetries: Int = 4,
+    maxRetries: Int = RedisConfigDefaults.IO.MaxRetries,
     receiveTimeoutOpt: Option[FiniteDuration] = RedisConfigDefaults.IO.ReceiveTimeoutOpt,
     connectTimeout: FiniteDuration = RedisConfigDefaults.IO.ConnectTimeout,
     maxWriteBatchSize: Int = RedisConfigDefaults.IO.MaxWriteBatchSize,

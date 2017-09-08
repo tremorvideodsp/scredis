@@ -22,7 +22,7 @@ import scala.concurrent.{Await, Future, Promise}
  */
 abstract class ClusterConnection(
     nodes: Seq[Server],
-    maxRetries: Int = 4,
+    maxRetries: Int = RedisConfigDefaults.IO.MaxRetries,
     receiveTimeoutOpt: Option[FiniteDuration] = RedisConfigDefaults.IO.ReceiveTimeoutOpt,
     connectTimeout: FiniteDuration = RedisConfigDefaults.IO.ConnectTimeout,
     maxWriteBatchSize: Int = RedisConfigDefaults.IO.MaxWriteBatchSize,

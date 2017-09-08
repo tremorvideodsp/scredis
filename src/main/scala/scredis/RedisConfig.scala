@@ -77,7 +77,8 @@ class RedisConfig(config: Config = ConfigFactory.load().getConfig("scredis")) {
     val ReceiveTimeoutOpt = optionally("receive-timeout") {
       parseFiniteDuration("receive-timeout")
     }
-    
+
+    val MaxRetries = config.getInt("max-retries")
     val MaxWriteBatchSize = config.getInt("max-write-batch-size")
     val TCPSendBufferSizeHint = config.getInt("tcp-send-buffer-size-hint")
     val TCPReceiveBufferSizeHint = config.getInt("tcp-receive-buffer-size-hint")
